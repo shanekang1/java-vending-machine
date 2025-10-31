@@ -1,3 +1,17 @@
+# ☕ Java 객체지향 콘솔 자판기 미니 프로젝트
+
+이 프로젝트는 Java의 핵심 OOP 원칙(상속, 인터페이스)과 예외 처리,
+그리고 컬렉션 프레임워크(`Map`) 사용을 목적으로 진행되었습니다.
+
+## 1. 실행 화면
+
+(아까 성공했던 콘솔 스크린샷을 여기에 넣으면 좋습니다)
+
+## 2. 프로젝트 핵심 설계 (Class Diagram)
+
+(이 다이어그램은 이 프로젝트가 어떻게 체계적으로 설계되었는지 보여줍니다.)
+
+```mermaid
 classDiagram
 
     class Main
@@ -31,7 +45,7 @@ classDiagram
     class Water
     class Coffee
     class Milk
-    
+
     class NotEnoughMoneyException
     class OutOfStockException
 
