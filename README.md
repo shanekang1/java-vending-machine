@@ -49,29 +49,35 @@ classDiagram
     class NotEnoughMoneyException
     class OutOfStockException
 
+    
     ' --- 1. Main dependency ---'
     Main ..> VendingMachineService : uses
     Main ..> VendingMachineImpl : creates
     Main ..> NotEnoughMoneyException : catches
     Main ..> OutOfStockException : catches
 
+    
     ' --- 2. Interface implementation ---'
     VendingMachineImpl ..|> VendingMachineService : implements
 
+    
     ' --- 3. Object composition (Map) ---'
     VendingMachineImpl *-- "many" ItemSlot : has-a
     ItemSlot --> "1" Drink : has-a
 
+    
     ' --- 4. Inheritance ---'
     Drink <|-- Cola
     Drink <|-- Water
     Drink <|-- Coffee
     Drink <|-- Milk
 
+    
     ' --- 5. Exception inheritance ---'
     Exception <|-- NotEnoughMoneyException
     Exception <|-- OutOfStockException
 
+    
     ' --- 6. Exception throwing ---'
     VendingMachineImpl ..> NotEnoughMoneyException : throws
     VendingMachineImpl ..> OutOfStockException : throws
