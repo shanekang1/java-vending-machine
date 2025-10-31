@@ -5,7 +5,7 @@
 
 ## 1. 실행 화면
 
-(아까 성공했던 콘솔 스크린샷을 여기에 넣으면 좋습니다)
+(여기에 Eclipse 콘솔이 성공적으로 실행된 화면을 캡처해서 넣으시면 좋습니다)
 
 ## 2. 프로젝트 핵심 설계 (Class Diagram)
 
@@ -45,33 +45,33 @@ classDiagram
     class Water
     class Coffee
     class Milk
-
+    
     class NotEnoughMoneyException
     class OutOfStockException
 
-    ' --- 1. Main의 의존성 ---'
+    ' --- 1. Main dependency ---'
     Main ..> VendingMachineService : uses
     Main ..> VendingMachineImpl : creates
     Main ..> NotEnoughMoneyException : catches
     Main ..> OutOfStockException : catches
 
-    ' --- 2. 인터페이스 구현 (요구조건 1) ---'
+    ' --- 2. Interface implementation ---'
     VendingMachineImpl ..|> VendingMachineService : implements
 
-    ' --- 3. 객체 구성 (자판기가 슬롯을 가짐 / Map) ---'
+    ' --- 3. Object composition (Map) ---'
     VendingMachineImpl *-- "many" ItemSlot : has-a
     ItemSlot --> "1" Drink : has-a
 
-    ' --- 4. 상속 (요구조건 2) ---'
+    ' --- 4. Inheritance ---'
     Drink <|-- Cola
     Drink <|-- Water
     Drink <|-- Coffee
     Drink <|-- Milk
 
-    ' --- 5. 예외 상속 (요구조건 3) ---'
+    ' --- 5. Exception inheritance ---'
     Exception <|-- NotEnoughMoneyException
     Exception <|-- OutOfStockException
 
-    ' --- 6. 예외 발생 (throws) ---'
+    ' --- 6. Exception throwing ---'
     VendingMachineImpl ..> NotEnoughMoneyException : throws
     VendingMachineImpl ..> OutOfStockException : throws
