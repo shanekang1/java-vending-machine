@@ -1,0 +1,8 @@
+# Java 컴파일된 파일
+/bin/
+*.class
+
+# Eclipse 설정 파일
+/.settings/
+.project
+.classpath
