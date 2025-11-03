@@ -89,16 +89,16 @@ classDiagram
     VendingMachineImpl ..> OutOfStockException : throws
 ```
 
-## A second-level heading  에러&오류 개선 처리과정
+## 3 에러&오류 개선 처리과정
 
-1-1 재고 관리 방식 (List vs Map)
+1-1 재고 관리 방식 (List => Map)
 
-@ BEFORE 코드작성 (ArrayList)
-<VendingMachineImpl.java> 
+@ BEFORE 코드작성 (ArrayList)  
+<VendingMachineImpl.java>   
 
-<img width="384" height="26" alt="map수정 전1" src="https://github.com/user-attachments/assets/f0f45615-dd71-4613-b061-7d6f24ed5297" />
-<img width="538" height="115" alt="map수정 전2" src="https://github.com/user-attachments/assets/fade5792-43cc-4a6c-bdb7-492c8d27a9f6" />
-<img width="422" height="238" alt="map수정 전3" src="https://github.com/user-attachments/assets/f9682ddd-6a57-446b-b29b-629b4866ed3d" />
+<img width="384" height="26" alt="map수정 전1" src="https://github.com/user-attachments/assets/f0f45615-dd71-4613-b061-7d6f24ed5297" />  \
+<img width="538" height="115" alt="map수정 전2" src="https://github.com/user-attachments/assets/fade5792-43cc-4a6c-bdb7-492c8d27a9f6" />  \
+<img width="422" height="238" alt="map수정 전3" src="https://github.com/user-attachments/assets/f9682ddd-6a57-446b-b29b-629b4866ed3d" />\
 
 
 
@@ -108,7 +108,7 @@ classDiagram
 <VendingMachineImpl.java>  현재 코드)
 
 <img width="549" height="190" alt="map수정1" src="https://github.com/user-attachments/assets/0e7ee2d8-b0a3-4fab-8bf9-4656ac3347cd" />
-<img width="539" height="161" alt="map수정2" src="https://github.com/user-attachments/assets/78bd5875-3c3d-4f49-9546-0cf10850ab85" />
+<img width="539" height="161" alt="map수정2" src="https://github.com/user-attachments/assets/78bd5875-3c3d-4f49-9546-0cf10850ab85" />\
 
 
 처음에는 ArrayList로 재고를 관리하려 했습니다.
@@ -118,73 +118,20 @@ classDiagram
 
 ========================================================
 
-1-2
+1-2 오류 처리 방식 (if-else => Exception)
 
-<VendingMachineImpl.java>
-// selectItem이 boolean을 반환
-public boolean selectItem(String slotId) {
-    ItemSlot selectedSlot = inventory.get(slotId.toUpperCase());
-    
-    if (selectedSlot.isOutOfStock()) {
-        // 재고가 없으면 false 반환
-        return false; 
-    }
-    if (this.currentBalance < selectedSlot.getPrice()) {
-        // 돈이 없어도 false 반환
-        return false; 
-    }
-    return true;
-}
+<VendingMachineImpl.java> 변경 전/후\
+<img width="435" height="217" alt="오류처리방식 수정 전(main)2-3" src="https://github.com/user-attachments/assets/4be6b3dc-5a83-4ce9-a4d8-57b1c582d203" />
+<img width="759" height="308" alt="오류처리방식 수정2-1" src="https://github.com/user-attachments/assets/aee2e268-dafe-4a1c-907e-83caf6cb0ce6" />
 
-< Main.java>
-// ...
-case 2:
-    String slotId = scanner.next();
-    boolean success = machine.selectItem(slotId); // boolean으로 받음
-    
-    if (success) {
-        System.out.println("[구매 성공!]");
-    } else {
-        // [치명적 문제]
-        // 왜 실패했는지 알 수 없음! (재고 부족? 돈 부족?)
-        System.out.println("[오류] 구매에 실패했습니다.");
-    }
-    break;
-// ...
-
-                ▼    ▼    ▼    ▼
+\
+< Main.java> 변경 전/후 \
+<img width="495" height="180" alt="오류처리방식 수정 전(main)2-4" src="https://github.com/user-attachments/assets/a74b8334-71e0-4ec1-b3d0-f37633952ab8" />\
+<img width="468" height="191" alt="오류처리방식 수정(main)2-2" src="https://github.com/user-attachments/assets/ebcea3bf-f8d1-4603-891f-9f2311daa00b" />\
 
 
-<VendingMachineImpl.java>  변경 후 코드
-// 반환 타입이 void 이고, 대신 예외를 '던진다(throws)'
-public void selectItem(String slotId) 
-        throws NotEnoughMoneyException, OutOfStockException {
-    
-    ItemSlot selectedSlot = inventory.get(slotId.toUpperCase());
-    // ...
-    if (selectedSlot.isOutOfStock()) {
-        // [해결책 1] 재고 부족 예외를 던진다
-        throw new OutOfStockException("[재고 부족] ...");
-    }
-    if (this.currentBalance < selectedSlot.getPrice()) {
-        // [해결책 2] 잔액 부족 예외를 던진다
-        throw new NotEnoughMoneyException("[잔액 부족] ...");
-    }
-    // ...
-}
 
-<Main.java>
-// ...
-case 2:
-    String slotId = scanner.next();
-    try {
-        machine.selectItem(slotId); // 일단 시도
-    } catch (NotEnoughMoneyException | OutOfStockException e) {
-        // 실패한 이유(e.getMessage())를 정확히 알 수 있음
-        System.out.println(e.getMessage());
-    }
-    break;
-// ...
+
 
 처음에는 구매 실패 시 false를 반환하도록 만들었습니다.
 하지만 이 방식은 Main에서 false가 재고부족 때문인지,잔액부족 때문인지
