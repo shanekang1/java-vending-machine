@@ -6,10 +6,13 @@
 ## 1. 실행 화면
 
 프로그램을 실행했을 때의 기본 화면과 사용자가 상호작용하는 예시입니다.
+![Animationstart](https://github.com/user-attachments/assets/c6eafd59-af12-4d8f-9491-ff3162b4d698)
 
-<img width="329" height="311" alt="자판기메뉴1-1(0원일때 구매시도)" src="https://github.com/user-attachments/assets/52e8e8ef-c86f-4842-8dd4-a5faaf030e12" />
+![Animationstartbuycoffee](https://github.com/user-attachments/assets/c7b8590b-5851-4d83-b849-b4097ddc267a)
 
-<img width="335" height="294" alt="자판기메뉴1(스타트화면)" src="https://github.com/user-attachments/assets/79c10b2c-21b9-4252-a5d1-1d0a582c8ca5" />
+
+
+![Animationstartsold](https://github.com/user-attachments/assets/18d0686a-2552-48b2-af50-886052538d55)
 
 ## 2. 프로젝트 핵심 설계 (Class Diagram)
 
