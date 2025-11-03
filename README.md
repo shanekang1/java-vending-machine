@@ -87,14 +87,15 @@ classDiagram
     %% --- 6. Exception throwing ---
     VendingMachineImpl ..> NotEnoughMoneyException : throws
     VendingMachineImpl ..> OutOfStockException : throws
+```
 
-
-3. 에러&오류 개선 처리과정
+## A second-level heading  에러&오류 개선 처리과정
 
 1-1 재고 관리 방식 (List vs Map)
 
 @ BEFORE 코드작성 (ArrayList)
 <VendingMachineImpl.java> 
+
 <img width="384" height="26" alt="map수정 전1" src="https://github.com/user-attachments/assets/f0f45615-dd71-4613-b061-7d6f24ed5297" />
 <img width="538" height="115" alt="map수정 전2" src="https://github.com/user-attachments/assets/fade5792-43cc-4a6c-bdb7-492c8d27a9f6" />
 <img width="422" height="238" alt="map수정 전3" src="https://github.com/user-attachments/assets/f9682ddd-6a57-446b-b29b-629b4866ed3d" />
