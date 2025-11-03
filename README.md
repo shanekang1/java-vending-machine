@@ -9,6 +9,7 @@
 
 <img width="329" height="311" alt="자판기메뉴1-1(0원일때 구매시도)" src="https://github.com/user-attachments/assets/52e8e8ef-c86f-4842-8dd4-a5faaf030e12" />
 
+<img width="335" height="294" alt="자판기메뉴1(스타트화면)" src="https://github.com/user-attachments/assets/79c10b2c-21b9-4252-a5d1-1d0a582c8ca5" />
 
 ## 2. 프로젝트 핵심 설계 (Class Diagram)
 
