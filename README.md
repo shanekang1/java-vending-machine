@@ -16,7 +16,6 @@
 
 ## 2. 프로젝트 핵심 설계 (Class Diagram)
 
-(이 다이어그램은 이 프로젝트가 어떻게 체계적으로 설계되었는지 보여줍니다.)
 
 ```mermaid
 classDiagram
@@ -142,7 +141,8 @@ public void selectItem(String slotId) {
     }
 
 처음에는 ArrayList로 재고를 관리하려 했습니다.
-하지만 'A1'을 구매할 때마다 for문으로 리스트 전체를 탐색하는 것이 매우 비효율적이라고 판단하여 'A1'이라는 Key로 재고(ItemSlot)라는 Value를 즉시(O(1)의 속도로) 찾아낼 수 있는 HashMap으로 자료구조를 리팩토링했습니다.
+하지만 'A1'을 구매할 때마다 for문으로 리스트 전체를 탐색하는 것이 매우 비효율적이라고 판단하여
+'A1'이라는 Key로 재고(ItemSlot)라는 Value를 즉시 찾아낼 수 있는HashMap으로 자료구조를 리팩토링했습니다.
 
 
 ========================================================
@@ -215,8 +215,11 @@ case 2:
     break;
 // ...
 
-처음에는 구매 실패 시 false를 반환하도록 만들었습니다. 하지만 이 방식은 Main에서 false가 재고부족 때문인지, 잔액부족 때문인지 구별할 수 없는 문제가 있었습니다.
+처음에는 구매 실패 시 false를 반환하도록 만들었습니다.
+하지만 이 방식은 Main에서 false가 재고부족 때문인지,잔액부족 때문인지
+구별할 수 없는 문제가 있었습니다.
+이 문제를 해결하기 위해 NotEnoughMoneyException과 OutOfStockException라는
+사용자 정의예외(Custom Exception)를 만들어 throw하도록 수정했습니다.
 
-이 문제를 해결하기 위해 NotEnoughMoneyException과 OutOfStockException이라는 사용자 정의예외(Custom Exception)를 만들어 throw하도록 수정했습니다.
-
-그 결과, Main에서는 try-catch를 통해 실패 원인을 명확하게 파악하고 사용자에게 정확한 안내 메시지를 보여줄 수 있도록 코드를 개선했습니다.
+그 결과, Main에서는 try-catch를 통해 실패 원인을 명확하게 파악하고
+사용자에게 정확한 안내 메시지를 보여줄 수 있도록 코드를 개선했습니다.
