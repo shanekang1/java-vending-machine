@@ -89,56 +89,26 @@ classDiagram
     VendingMachineImpl ..> OutOfStockException : throws
 
 
-## 3. 에러&오류 개선 처리과정
+3. 에러&오류 개선 처리과정
 
 1-1 재고 관리 방식 (List vs Map)
 
 @ BEFORE 코드작성 (ArrayList)
 <VendingMachineImpl.java> 
-private List<ItemSlot> inventory = new ArrayList<>();
+<img width="384" height="26" alt="map수정 전1" src="https://github.com/user-attachments/assets/f0f45615-dd71-4613-b061-7d6f24ed5297" />
+<img width="538" height="115" alt="map수정 전2" src="https://github.com/user-attachments/assets/fade5792-43cc-4a6c-bdb7-492c8d27a9f6" />
+<img width="422" height="238" alt="map수정 전3" src="https://github.com/user-attachments/assets/f9682ddd-6a57-446b-b29b-629b4866ed3d" />
 
-public VendingMachineImpl() {
-    // 슬롯 ID("A1")를 ItemSlot이 직접 갖게 됨
-    inventory.add(new ItemSlot("A1", new Cola(), 5));
-    inventory.add(new ItemSlot("A2", new Water(), 10));
-}
 
-@Override
-public void selectItem(String slotId) {
-    ItemSlot selectedSlot = null;
-    for (ItemSlot slot : inventory) {
-        if (slot.getSlotId().equals(slotId.toUpperCase())) {
-            selectedSlot = slot;
-            break;
-        }
-    } 
-    if (selectedSlot == null) {
-        System.out.println("[오류] 슬롯이 없습니다.");
-        return;
-    }
 
                 ▼    ▼    ▼    ▼
 
 @ AFTER 코드작성 (Map)
 <VendingMachineImpl.java>  현재 코드)
-private Map<String, ItemSlot> inventory = new HashMap<>();
 
-public VendingMachineImpl() {
-    // Key("A1")가 Value(ItemSlot)를 즉시 찾아줌
-    inventory.put("A1", new ItemSlot(new Cola(), 5));
-    inventory.put("A2", new ItemSlot(new Water(), 10));
-}
+<img width="549" height="190" alt="map수정1" src="https://github.com/user-attachments/assets/0e7ee2d8-b0a3-4fab-8bf9-4656ac3347cd" />
+<img width="539" height="161" alt="map수정2" src="https://github.com/user-attachments/assets/78bd5875-3c3d-4f49-9546-0cf10850ab85" />
 
-@Override
-public void selectItem(String slotId) {
-    // [최적의 해결책!]
-    // Map의 Key를 이용해 단 한 번의 연산으로 재고를 찾아냄 (O(1))
-    ItemSlot selectedSlot = inventory.get(slotId.toUpperCase()); 
-    
-    if (selectedSlot == null) {
-         System.out.println("[오류] '" + slotId + "'는 존재하지 않는 슬롯입니다.");
-         return;
-    }
 
 처음에는 ArrayList로 재고를 관리하려 했습니다.
 하지만 'A1'을 구매할 때마다 for문으로 리스트 전체를 탐색하는 것이 매우 비효율적이라고 판단하여
