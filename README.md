@@ -52,10 +52,18 @@ classDiagram
         -quantity : int
     }
 
-    class Cola
-    class Water
-    class Coffee
-    class Milk
+   class Cola {
+        +Cola()
+    }
+    class Water {
+        +Water()
+    }
+    class Coffee {
+        +Coffee()
+    }
+    class Milk {
+        +Milk()
+    }
     
     class NotEnoughMoneyException {
 +NotEnoughMoneyException(String message)
