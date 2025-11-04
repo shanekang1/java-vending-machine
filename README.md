@@ -177,9 +177,13 @@ classDiagram
 ---
 
 ### 1-1. 재고 관리 방식 (List $\rightarrow$ Map)
+<br>
 
+**<VendingMachineImpl.java>  변경(전/후)** 
+\
+\
 **[BEFORE]** (ArrayList)
-<VendingMachineImpl.java> <br>
+<br>
 <img width="384" height="26" alt="map수정 전1" src="https://github.com/user-attachments/assets/f0f45615-dd71-4613-b061-7d6f24ed5297" /> <br>
 <img width="538" height="115" alt="map수정 전2" src="https://github.com/user-attachments/assets/fade5792-43cc-4a6c-bdb7-492c8d27a9f6" /> <br>
 <img width="422" height="238" alt="map수정 전3" src="https://github.com/user-attachments/assets/f9682ddd-6a57-446b-b29b-629b4866ed3d" /> <br>
@@ -187,7 +191,7 @@ classDiagram
 ▼ ▼ ▼ ▼
 
 **[AFTER]** (Map)
-<VendingMachineImpl.java> <br>
+<br>
 <img width="549" height="190" alt="map수정1" src="https://github.com/user-attachments/assets/0e7ee2d8-b0a3-4fab-8bf9-4656ac3347cd" />
 <img width="539" height="161" alt="map수정2" src="https://github.com/user-attachments/assets/78bd5875-3c3d-4f49-9546-0cf10850ab85" />
 
@@ -201,29 +205,29 @@ classDiagram
 
 ### 1-2. 오류 처리 방식 (if-else $\rightarrow$ Exception)
 
-<VendingMachineImpl.java> 변경(전/후)
+**<VendingMachineImpl.java> 변경(전/후)**
 
-**[BEFORE]**
+**[BEFORE] if-else**
 <br>
 <img width="435" height="217" alt="오류처리방식 수정 전(main)2-3" src="https://github.com/user-attachments/assets/4be6b3dc-5a83-4ce9-a4d8-57b1c582d203" />
 
 ▼ ▼ ▼ ▼
 
-**[AFTER]**
+**[AFTER] Exception**
 <br>
 <img width="759" height="308" alt="오류처리방식 수정2-1" src="https://github.com/user-attachments/assets/aee2e268-dafe-4a1c-907e-83caf6cb0ce6" />
 
 <br>
 
-< Main.java> 변경(전/후)
+**< Main.java> 변경(전/후)**
 
-**[BEFORE]**
+**[BEFORE] if-else**
 <br>
 <img width="495" height="180" alt="오류처리방식 수정 전(main)2-4" src="https://github.com/user-attachments/assets/a74b8334-71e0-4ec1-b3d0-f37633952ab8" />
 
 ▼ ▼ ▼ ▼
 
-**[AFTER]**
+**[AFTER] Exception**
 <br>
 <img width="468" height="191" alt="오류처리방식 수정(main)2-2" src="https://github.com/user-attachments/assets/ebcea3bf-f8d1-4603-891f-9f2311daa00b" />
 
@@ -236,7 +240,7 @@ classDiagram
 
 ### 1-3. 사용자 입력 방어 (무방비 $\rightarrow$ try-catch)
 
-<Main.java> 변경(전/후)
+**<Main.java> 변경(전/후)**
 
 **[BEFORE]**
 <br>
@@ -244,7 +248,7 @@ classDiagram
 
 ▼ ▼ ▼ ▼
 
-**[AFTER]**<br>
+**[AFTER] try-catch** <br>
 <img width="594" height="310" alt="오류처리수정후3-2" src="https://github.com/user-attachments/assets/a7c48f29-e1e3-41e8-bb59-5dc931ee7501" />
 
 **개선 이유:**
