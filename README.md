@@ -50,6 +50,15 @@ classDiagram
     class ItemSlot {
         -drink : Drink
         -quantity : int
+        --
+        +ItemSlot(Drink, int)
+        +getDrink() : Drink
+        +getQuantity() : int
+        +getPrice() : int
+        +getName() : String
+        +setQuantity(int)
+        +isOutOfStock() : boolean
+        +decreaseStock()
     }
 
    class Cola {
