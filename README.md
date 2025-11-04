@@ -32,7 +32,7 @@ Java의 핵심 객체지향(OOP) 원칙과 예외 처리, 그리고 컬렉션 �
 ### b. (Test Case 2: 정상 작동 테스트)
 
 - 금액투입(5000원) -> 'B1'커피구매(1500원) -> 잔액표시(3500원)\
-![Animationstartbuycoffee](https://github.com/user-attachments/assets/c7b8590b-5851-4d83-b849-b4097ddc267a)
+![정상출력1](https://github.com/user-attachments/assets/2b9e4665-1f13-4850-be36-4f362396e084)
 
 ### c. (Test Case 3: 재고 부족 테스트)
 
