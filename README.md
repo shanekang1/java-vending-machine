@@ -82,10 +82,12 @@ classDiagram
     class Coffee
     class Milk
     
-    class NotEnoughMoneyException
-    class OutOfStockException
-
-    
+    class NotEnoughMoneyException {
+        -NotEnoughMoneyException
+        }
+    class OutOfStockException {
+        -OutOfStockException
+       }
     %% --- 1. Main dependency ---
     Main ..> VendingMachineService : uses
     Main ..> VendingMachineImpl : creates
