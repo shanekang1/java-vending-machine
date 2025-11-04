@@ -58,10 +58,10 @@ classDiagram
     class Milk
     
     class NotEnoughMoneyException {
-        +NotEnoughMoneyException(String message)
++NotEnoughMoneyException(String message)
     }
     class OutOfStockException {
-        +OutOfStockException(String message)
++OutOfStockException(String message)
     }
     %% --- 1. Main dependency ---
     Main ..> VendingMachineService : uses
