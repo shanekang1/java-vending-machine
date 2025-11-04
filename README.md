@@ -37,7 +37,8 @@ Java의 핵심 객체지향(OOP) 원칙과 예외 처리, 그리고 컬렉션 �
 ### c. (Test Case 3: 재고 부족 테스트)
 
 - 커피(품절 상태) 구매시도 -> [재고부족] 메세지 송출\
-![Animationstartsold](https://github.com/user-attachments/assets/18d0686a-2552-48b2-af50-886052538d55)
+![재고부족소진](https://github.com/user-attachments/assets/e03e5b17-55c0-423c-89f1-e5ea35e8651a)
+
 
 ## 4. 프로젝트 핵심 설계 (Class Diagram)
 
