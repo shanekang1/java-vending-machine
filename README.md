@@ -25,7 +25,11 @@ Java의 핵심 객체지향(OOP) 원칙과 예외 처리, 그리고 컬렉션 �
 ```mermaid
 classDiagram
 
-    class Main
+    %% --- 지시사항 반영: Main 클래스 메서드 표기 ---
+    class Main {
+        +main(String[] args) : void
+    }
+
     class Exception
     class VendingMachineService {
         <<Interface>>
@@ -37,16 +41,26 @@ classDiagram
     class VendingMachineImpl {
         -inventory : Map~String, ItemSlot~
         -currentBalance : int
+        --
+        +VendingMachineImpl()
         +insertMoney(int)
         +selectItem(String)
         +returnChange()
         +showItems()
     }
+
+    %% --- 지시사항 반영: Drink 추상 클래스 메서드 표기 ---
     class Drink {
         <<Abstract>>
         -name : String
         -price : int
+        --
+        +Drink(String, int)
+        +getName() : String
+        +getPrice() : int
     }
+    
+    %% --- 지시사항 반영: ItemSlot 모든 메서드 표기 ---
     class ItemSlot {
         -drink : Drink
         -quantity : int
@@ -61,7 +75,8 @@ classDiagram
         +decreaseStock()
     }
 
-   class Cola {
+    %% --- 지시사항 반영: 모든 생성자 표기 ---
+    class Cola {
         +Cola()
     }
     class Water {
@@ -72,14 +87,14 @@ classDiagram
     }
     class Milk {
         +Milk()
-    }
-    
+    }    
     class NotEnoughMoneyException {
-+NotEnoughMoneyException(String message)
+        +NotEnoughMoneyException(String message)
     }
     class OutOfStockException {
-+OutOfStockException(String message)
+        +OutOfStockException(String message)
     }
+    
     %% --- 1. Main dependency ---
     Main ..> VendingMachineService : uses
     Main ..> VendingMachineImpl : creates
