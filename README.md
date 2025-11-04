@@ -27,7 +27,7 @@ Java의 핵심 객체지향(OOP) 원칙과 예외 처리, 그리고 컬렉션 �
 
 ### a. (Test Case 1: 잔액 부족 테스트)
 - 잔고 0원으로 커피 구매 시도 -> [잔액부족]메세지 송출\
-![Animationstart](https://github.com/user-attachments/assets/c6eafd59-af12-4d8f-9491-ff3162b4d698) 
+![정상출력1-1](https://github.com/user-attachments/assets/adeef5dc-0f27-4ce5-8894-49a216313446)
 
 ### b. (Test Case 2: 정상 작동 테스트)
 
